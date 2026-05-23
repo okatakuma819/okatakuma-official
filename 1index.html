@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>岡拓真｜Official Website</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color: #111827;
+      background: #f8fafc;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 36%),
+        linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #f8fafc 100%);
+      padding: 120px 24px 100px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .label {
+      display: inline-block;
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 82px);
+      line-height: 1.1;
+      letter-spacing: -0.07em;
+      margin: 0 0 26px;
+    }
+
+    .hero-text {
+      max-width: 720px;
+      font-size: 18px;
+      color: #374151;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .button-primary {
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.3);
+    }
+
+    .button-secondary {
+      background: white;
+      color: #111827;
+      border: 1px solid #e5e7eb;
+    }
+
+    .button-secondary:hover {
+      background: #f3f4f6;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .section-title {
+      margin-bottom: 32px;
+    }
+
+    .section-title span {
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 34px;
+      line-height: 1.3;
+      letter-spacing: -0.04em;
+      margin: 8px 0 0;
+    }
+
+    .profile-box {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 28px;
+    }
+
+    .profile-name {
+      font-size: 28px;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    .profile-en {
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      gap: 16px;
+    }
+
+    .info-list strong {
+      min-width: 90px;
+      color: #2563eb;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 26px;
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #4b5563;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .work-item {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .work-item h3 {
+      margin-top: 0;
+    }
+
+    .tag-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .tag {
+      background: #eff6ff;
+      color: #2563eb;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .thought-box {
+      background: #111827;
+      color: white;
+      border-radius: 26px;
+      padding: 34px;
+    }
+
+    .thought-box p {
+      color: #d1d5db;
+    }
+
+    .contact-box {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .contact-links a {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #f3f4f6;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .contact-links a:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 36px 24px;
+      background: #111827;
+      color: #d1d5db;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 84px 22px 76px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .profile-box {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .works {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">岡拓真｜Official Website</a>
+
+      <nav>
+        <a href="#profile">プロフィール</a>
+        <a href="#activity">活動</a>
+        <a href="#works">制作物</a>
+        <a href="#thoughts">考え</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="label">Takuma Oka Official Website</span>
+      <h1>湘南から京都へ、<br>そして地域政治へ。</h1>
+      <p class="hero-text">
+        同志社大学法学部政治学科に在学中。地方政治、国際関係、経済、Webサービス制作に関心があります。
+        このサイトでは、活動・制作物・考えていることをまとめています。
+      </p>
+
+      <div class="buttons">
+        <a href="#profile" class="button button-primary">プロフィールを見る</a>
+        <a href="#works" class="button button-secondary">制作物を見る</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="profile">
+      <div class="section-title">
+        <span>Profile</span>
+        <h2>プロフィール</h2>
+      </div>
+
+      <div class="profile-box">
+        <div>
+          <p class="profile-name">岡 拓真</p>
+          <p class="profile-en">Takuma Oka</p>
+          <p>
+            神奈川県出身。神奈川総合高校卒業。
+            現在は同志社大学法学部政治学科に在学しています。
+            政治学、国際関係、地方自治、地域経済、Webサービス制作に関心があります。
+          </p>
+          <p>
+            将来的には、地元・湘南地域の政治に関わり、若者の政治参加や地域の魅力向上に取り組むことを目指しています。
+          </p>
+        </div>
+
+        <ul class="info-list">
+          <li><strong>名前</strong><span>岡拓真</span></li>
+          <li><strong>大学</strong><span>同志社大学 法学部政治学科</span></li>
+          <li><strong>出身</strong><span>神奈川県</span></li>
+          <li><strong>関心</strong><span>地方政治・国際関係・経済・Web制作</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="activity">
+      <div class="section-title">
+        <span>Activity</span>
+        <h2>活動</h2>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>政治・地域</h3>
+          <p>
+            若者の政治参加、地方自治、湘南地域のまちづくり、地域経済に関心を持っています。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>大学での学び</h3>
+          <p>
+            同志社大学法学部政治学科で、政治学や国際関係を中心に学んでいます。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Web制作</h3>
+          <p>
+            音楽レビューSNS「Album Collection」など、個人でWebサービスを制作しています。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="works">
+      <div class="section-title">
+        <span>Works</span>
+        <h2>制作物</h2>
+      </div>
+
+      <div class="works">
+        <div class="work-item">
+          <h3>Album Collection</h3>
+          <p>
+            音楽アルバムや楽曲の感想を投稿・共有できるWebサービスです。
+            音楽の好みやレビューを通じて人とつながるSNSを目指しています。
+          </p>
+          <div class="tag-list">
+            <span class="tag">Webサービス</span>
+            <span class="tag">音楽</span>
+            <span class="tag">SNS</span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <h3>文章・エッセイ</h3>
+          <p>
+            日常、大学生活、政治、音楽、地域についての文章を書いています。
+            今後、このサイトにも少しずつ掲載していきます。
+          </p>
+          <div class="tag-list">
+            <span class="tag">文章</span>
+            <span class="tag">大学生活</span>
+            <span class="tag">政治</span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <h3>小説「高3焦燥主義」</h3>
+          <p>
+            高校生活、受験、恋愛、焦燥感をテーマにした小説です。
+          </p>
+          <div class="tag-list">
+            <span class="tag">小説</span>
+            <span class="tag">青春</span>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <h3>政治・社会メモ</h3>
+          <p>
+            地方政治、国際関係、経済、教育、交通について考えたことをまとめていきます。
+          </p>
+          <div class="tag-list">
+            <span class="tag">政治</span>
+            <span class="tag">社会</span>
+            <span class="tag">地域</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="thoughts">
+      <div class="section-title">
+        <span>Thoughts</span>
+        <h2>考えていること</h2>
+      </div>
+
+      <div class="thought-box">
+        <h3>地方から社会を考える。</h3>
+        <p>
+          地方政治は、生活にもっとも近い政治です。
+          交通、教育、福祉、観光、地域経済、文化など、日常の多くは地域と結びついています。
+        </p>
+        <p>
+          若者が地域や政治に関心を持ち、自分たちの生活を自分たちで考えるきっかけをつくりたい。
+          そんな問題意識を持ちながら、学び、発信し、活動していきます。
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <span>Contact</span>
+        <h2>お問い合わせ</h2>
+      </div>
+
+      <div class="contact-box">
+        <p>
+          ご連絡は、メールまたは各種SNSからお願いいたします。
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:okatakuma819@gmail.com">メール</a>
+          <a href="https://github.com/okatakuma819" target="_blank">GitHub</a>
+          <a href="#" target="_blank">X</a>
+          <a href="#" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Takuma Oka. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
