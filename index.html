@@ -1,3 +1,6 @@
+以下を **`index.html` の中身ごと全部置き換え** でOK。
+
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -32,7 +35,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid #e5e7eb;
     }
@@ -100,12 +103,6 @@
       margin-bottom: 34px;
     }
 
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
     .button {
       display: inline-flex;
       align-items: center;
@@ -115,15 +112,12 @@
       font-weight: 700;
       font-size: 14px;
       transition: 0.2s;
-    }
-
-    .button-primary {
       background: #2563eb;
       color: white;
       box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
     }
 
-    .button-primary:hover {
+    .button:hover {
       transform: translateY(-2px);
       box-shadow: 0 14px 30px rgba(37, 99, 235, 0.3);
     }
@@ -179,6 +173,11 @@
       margin-bottom: 20px;
     }
 
+    .profile-text {
+      margin: 0;
+      color: #374151;
+    }
+
     .info-list {
       list-style: none;
       padding: 0;
@@ -197,47 +196,6 @@
       color: #2563eb;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: white;
-      padding: 26px;
-      border-radius: 22px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
-      transition: 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: #4b5563;
-      margin: 0;
-      font-size: 15px;
-    }
-
-    .thought-box {
-      background: #111827;
-      color: white;
-      border-radius: 26px;
-      padding: 34px;
-    }
-
-    .thought-box p {
-      color: #d1d5db;
-    }
-
     .contact-box {
       background: white;
       border-radius: 24px;
@@ -245,25 +203,26 @@
       box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
     }
 
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
+    .contact-box p {
+      margin-top: 0;
+      color: #374151;
     }
 
-    .contact-links a {
+    .contact-link {
       display: inline-block;
-      padding: 10px 16px;
-      background: #f3f4f6;
+      margin-top: 12px;
+      padding: 12px 18px;
+      background: #2563eb;
+      color: white;
       border-radius: 999px;
       font-weight: 700;
       font-size: 14px;
+      transition: 0.2s;
     }
 
-    .contact-links a:hover {
-      background: #2563eb;
-      color: white;
+    .contact-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
     }
 
     footer {
@@ -298,10 +257,6 @@
         grid-template-columns: 1fr;
       }
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
       h2 {
         font-size: 28px;
       }
@@ -316,8 +271,6 @@
 
       <nav>
         <a href="#profile">プロフィール</a>
-        <a href="#activity">活動</a>
-        <a href="#thoughts">考え</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
     </div>
@@ -333,9 +286,7 @@
         同志社大学法学部政治学科に在学中。
       </p>
 
-      <div class="buttons">
-        <a href="#profile" class="button button-primary">プロフィールを見る</a>
-      </div>
+      <a href="#profile" class="button">プロフィールを見る</a>
     </div>
   </div>
 
@@ -351,14 +302,9 @@
           <p class="profile-name">岡 拓真</p>
           <p class="profile-en">Takuma Oka</p>
 
-          <p>
+          <p class="profile-text">
             神奈川県出身。神奈川総合高校卒業。
             現在は同志社大学法学部政治学科に在学しています。
-          </p>
-
-          <p>
-            地方政治、国際関係、地域経済、まちづくりに関心があります。
-            将来的には、地元・湘南地域の政治に関わることを目指しています。
           </p>
         </div>
 
@@ -366,59 +312,7 @@
           <li><strong>名前</strong><span>岡拓真</span></li>
           <li><strong>大学</strong><span>同志社大学 法学部政治学科</span></li>
           <li><strong>出身</strong><span>神奈川県</span></li>
-          <li><strong>関心</strong><span>地方政治・国際関係・地域経済・まちづくり</span></li>
         </ul>
-      </div>
-    </section>
-
-    <section id="activity">
-      <div class="section-title">
-        <span>Activity</span>
-        <h2>活動</h2>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <h3>政治・地域</h3>
-          <p>
-            若者の政治参加、地方自治、湘南地域のまちづくりに関心を持っています。
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>大学での学び</h3>
-          <p>
-            同志社大学法学部政治学科で、政治学や国際関係を中心に学んでいます。
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>地域への関心</h3>
-          <p>
-            地元・湘南地域の暮らし、交通、観光、地域経済について考えています。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="thoughts">
-      <div class="section-title">
-        <span>Thoughts</span>
-        <h2>考えていること</h2>
-      </div>
-
-      <div class="thought-box">
-        <h3>地方から社会を考える。</h3>
-
-        <p>
-          地方政治は、生活にもっとも近い政治です。
-          交通、教育、福祉、観光、地域経済、文化など、日常の多くは地域と結びついています。
-        </p>
-
-        <p>
-          若者が地域や政治に関心を持ち、自分たちの生活を自分たちで考えるきっかけをつくりたい。
-          そんな問題意識を持ちながら、学び、発信し、活動していきます。
-        </p>
       </div>
     </section>
 
@@ -430,15 +324,12 @@
 
       <div class="contact-box">
         <p>
-          ご連絡は、メールまたは各種SNSからお願いいたします。
+          ご連絡はメールにてお願いいたします。
         </p>
 
-        <div class="contact-links">
-          <a href="mailto:okatakuma819@gmail.com">メール</a>
-          <a href="https://github.com/okatakuma819" target="_blank">GitHub</a>
-          <a href="#" target="_blank">X</a>
-          <a href="#" target="_blank">Instagram</a>
-        </div>
+        <a class="contact-link" href="mailto:okatakuma819@gmail.com">
+          okatakuma819@gmail.com
+        </a>
       </div>
     </section>
   </main>
@@ -448,3 +339,4 @@
   </footer>
 </body>
 </html>
+```
