@@ -6,149 +6,72 @@
   <title>管理画面 | 岡拓真 公式サイト</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f5f7fa;
-      color: #222;
-    }
-
-    header {
-      background: #0d47a1;
-      color: white;
-      padding: 24px;
-    }
-
-    main {
-      max-width: 800px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-
-    section {
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0 16px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    textarea {
-      min-height: 160px;
-    }
-
-    button {
-      padding: 12px 18px;
-      background: #0d47a1;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .logout {
-      background: #555;
-    }
-
-    .danger {
-      background: #c62828;
-    }
-
-    .post {
-      border-bottom: 1px solid #ddd;
-      padding: 15px 0;
-    }
-
-    .post:last-child {
-      border-bottom: none;
-    }
-
-    #message {
-      margin-top: 12px;
-      color: green;
-    }
+    body { margin: 0; font-family: sans-serif; background: #f5f7fa; color: #222; }
+    header { background: #0d47a1; color: white; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    main { max-width: 900px; margin: auto; padding: 30px 20px; }
+    section { background: white; padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    input, textarea, select { width: 100%; padding: 12px; margin: 8px 0 16px; font-size: 16px; box-sizing: border-box; }
+    textarea { min-height: 140px; }
+    button { padding: 12px 18px; background: #0d47a1; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    .logout { background: #555; }
+    .danger { background: #c62828; }
+    .post { border-bottom: 1px solid #ddd; padding: 15px 0; }
+    .post:last-child { border-bottom: none; }
+    .message { margin-top: 12px; color: green; }
+    a { color: #0d47a1; }
   </style>
 </head>
 
 <body>
-
   <header>
     <h1>管理画面</h1>
-
-    <button class="logout" id="logoutBtn">
-      ログアウト
-    </button>
+    <button class="logout" id="logoutBtn">ログアウト</button>
   </header>
 
   <main>
+    <section>
+      <h2>プロフィール編集</h2>
+
+      <input id="profileName" placeholder="名前 例：岡拓真" />
+      <input id="profileSubtitle" placeholder="肩書き 例：同志社大学法学部政治学科" />
+      <textarea id="profileBody" placeholder="プロフィール本文"></textarea>
+      <input id="profileEmail" placeholder="お問い合わせメール" />
+
+      <button id="saveProfileBtn">プロフィールを保存</button>
+      <p id="profileMessage" class="message"></p>
+    </section>
 
     <section>
       <h2>新規投稿</h2>
 
-      <input
-        id="title"
-        placeholder="タイトル"
-      />
-
-      <textarea
-        id="body"
-        placeholder="本文"
-      ></textarea>
+      <input id="title" placeholder="タイトル" />
+      <textarea id="body" placeholder="本文"></textarea>
 
       <select id="category">
-        <option value="お知らせ">
-          お知らせ
-        </option>
-
-        <option value="活動報告">
-          活動報告
-        </option>
+        <option value="お知らせ">お知らせ</option>
+        <option value="活動報告">活動報告</option>
       </select>
 
-      <button id="saveBtn">
-        投稿する
-      </button>
-
-      <p id="message"></p>
+      <button id="saveBtn">投稿する</button>
+      <p id="message" class="message"></p>
     </section>
 
     <section>
       <h2>投稿一覧</h2>
-
-      <div id="postList">
-        読み込み中...
-      </div>
+      <div id="postList">読み込み中...</div>
     </section>
 
-    <p>
-      <a href="index.html">
-        トップページへ戻る
-      </a>
-    </p>
-
+    <p><a href="index.html">トップページへ戻る</a></p>
   </main>
 
   <script type="module">
-
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
     import {
       getAuth,
       onAuthStateChanged,
       signOut
-    }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     import {
       getFirestore,
@@ -157,9 +80,12 @@
       getDocs,
       deleteDoc,
       doc,
-      serverTimestamp
-    }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      getDoc,
+      setDoc,
+      serverTimestamp,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyB8h-Qmk-3PbYXNiQfV9rTvdVKAFSibfiw",
@@ -175,134 +101,132 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    onAuthStateChanged(auth, (user) => {
-
+    onAuthStateChanged(auth, async (user) => {
       if (!user) {
-
         location.href = "login.html";
-
-      } else {
-
-        loadPosts();
-
+        return;
       }
 
+      await loadProfile();
+      await loadPosts();
     });
 
-    document
-      .getElementById("saveBtn")
-      .addEventListener("click", async () => {
+    async function loadProfile() {
+      const profileRef = doc(db, "site", "profile");
+      const profileSnap = await getDoc(profileRef);
 
-        const title =
-          document.getElementById("title").value;
+      if (profileSnap.exists()) {
+        const profile = profileSnap.data();
+        document.getElementById("profileName").value = profile.name || "";
+        document.getElementById("profileSubtitle").value = profile.subtitle || "";
+        document.getElementById("profileBody").value = profile.body || "";
+        document.getElementById("profileEmail").value = profile.email || "";
+      } else {
+        document.getElementById("profileName").value = "岡拓真";
+        document.getElementById("profileSubtitle").value = "同志社大学法学部政治学科";
+        document.getElementById("profileBody").value = "神奈川県出身。\n神奈川総合高校卒業。\n現在は同志社大学法学部政治学科に在学しています。";
+        document.getElementById("profileEmail").value = "okatakuma.official@gmail.com";
+      }
+    }
 
-        const body =
-          document.getElementById("body").value;
+    document.getElementById("saveProfileBtn").addEventListener("click", async () => {
+      const profileMessage = document.getElementById("profileMessage");
 
-        const category =
-          document.getElementById("category").value;
+      const name = document.getElementById("profileName").value.trim();
+      const subtitle = document.getElementById("profileSubtitle").value.trim();
+      const body = document.getElementById("profileBody").value.trim();
+      const email = document.getElementById("profileEmail").value.trim();
 
-        const message =
-          document.getElementById("message");
+      if (!name || !subtitle || !body || !email) {
+        profileMessage.textContent = "すべて入力してください。";
+        return;
+      }
 
-        if (!title || !body) {
+      try {
+        await setDoc(doc(db, "site", "profile"), {
+          name,
+          subtitle,
+          body,
+          email,
+          updatedAt: serverTimestamp()
+        });
 
-          message.textContent =
-            "タイトルと本文を入力してください。";
+        profileMessage.textContent = "プロフィールを保存しました。";
+      } catch (error) {
+        console.error(error);
+        profileMessage.textContent = "プロフィール保存に失敗しました。";
+      }
+    });
 
-          return;
+    document.getElementById("saveBtn").addEventListener("click", async () => {
+      const title = document.getElementById("title").value.trim();
+      const body = document.getElementById("body").value.trim();
+      const category = document.getElementById("category").value;
+      const message = document.getElementById("message");
 
-        }
+      if (!title || !body) {
+        message.textContent = "タイトルと本文を入力してください。";
+        return;
+      }
 
-        try {
+      try {
+        await addDoc(collection(db, "posts"), {
+          title,
+          body,
+          category,
+          isPublic: true,
+          createdAt: serverTimestamp()
+        });
 
-          await addDoc(
-            collection(db, "posts"),
-            {
-              title,
-              body,
-              category,
-              isPublic: true,
-              createdAt: serverTimestamp()
-            }
-          );
-
-          message.textContent =
-            "投稿しました。";
-
-          document.getElementById("title").value = "";
-          document.getElementById("body").value = "";
-
-          loadPosts();
-
-        } catch (error) {
-
-          console.error(error);
-
-          message.textContent =
-            "投稿に失敗しました。";
-
-        }
-
-      });
+        message.textContent = "投稿しました。";
+        document.getElementById("title").value = "";
+        document.getElementById("body").value = "";
+        await loadPosts();
+      } catch (error) {
+        console.error(error);
+        message.textContent = "投稿に失敗しました。";
+      }
+    });
 
     async function loadPosts() {
-
-      const postList =
-        document.getElementById("postList");
-
+      const postList = document.getElementById("postList");
       postList.innerHTML = "";
 
-      const snapshot =
-        await getDocs(collection(db, "posts"));
+      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
 
       snapshot.forEach((item) => {
-
         const post = item.data();
 
         postList.innerHTML += `
           <div class="post">
-            <h3>${post.title}</h3>
-            <p>${post.body}</p>
-
-            <button
-              class="danger"
-              onclick="deletePost('${item.id}')"
-            >
-              削除
-            </button>
+            <h3>${escapeHTML(post.title || "")}</h3>
+            <p>${escapeHTML(post.body || "").replace(/\n/g, "<br>")}</p>
+            <button class="danger" onclick="deletePost('${item.id}')">削除</button>
           </div>
         `;
-
       });
-
     }
 
     window.deletePost = async function(id) {
-
-      if (
-        !confirm("この投稿を削除しますか？")
-      ) return;
-
-      await deleteDoc(
-        doc(db, "posts", id)
-      );
-
-      loadPosts();
-
+      if (!confirm("この投稿を削除しますか？")) return;
+      await deleteDoc(doc(db, "posts", id));
+      await loadPosts();
     };
 
-    document
-      .getElementById("logoutBtn")
-      .addEventListener("click", async () => {
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await signOut(auth);
+      location.href = "login.html";
+    });
 
-        await signOut(auth);
-
-        location.href = "login.html";
-
-      });
-
+    function escapeHTML(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
   </script>
-
 </body>
 </html>
