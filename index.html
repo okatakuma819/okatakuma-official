@@ -3,23 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>岡拓真｜Official Website</title>
-
+  <title>岡拓真 公式サイト</title>
   <style>
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
-      color: #111827;
-      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      color: #1f2937;
+      background: #ffffff;
       line-height: 1.8;
     }
 
@@ -29,310 +24,368 @@
     }
 
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 100;
       background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid #e5e7eb;
     }
 
     .header-inner {
-      max-width: 1120px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 16px 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
-    .logo {
-      font-weight: 800;
-      font-size: 20px;
-      letter-spacing: -0.03em;
+    .site-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #0f3f78;
     }
 
     nav {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       font-size: 14px;
       font-weight: 600;
       color: #374151;
     }
 
     nav a:hover {
-      color: #2563eb;
+      color: #0f63b6;
     }
 
     .hero {
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 36%),
-        linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #f8fafc 100%);
-      padding: 120px 24px 100px;
+      min-height: 100vh;
+      padding: 120px 24px 80px;
+      background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 48%, #ffffff 100%);
+      display: flex;
+      align-items: center;
     }
 
     .hero-inner {
-      max-width: 1120px;
+      max-width: 1080px;
+      width: 100%;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
     }
 
     .label {
       display: inline-block;
-      color: #2563eb;
+      padding: 6px 14px;
+      margin-bottom: 24px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #0f3f78;
       font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
 
-    h1 {
-      font-size: clamp(42px, 8vw, 82px);
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
       line-height: 1.1;
-      letter-spacing: -0.07em;
-      margin: 0 0 26px;
+      color: #0f172a;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
     }
 
-    .hero-text {
-      max-width: 720px;
-      font-size: 18px;
-      color: #374151;
-      margin-bottom: 34px;
+    .hero-copy {
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #0f3f78;
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: #4b5563;
+      margin-bottom: 36px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 20px;
+      padding: 12px 22px;
       border-radius: 999px;
+      font-size: 15px;
       font-weight: 700;
-      font-size: 14px;
-      transition: 0.2s;
-      background: #2563eb;
-      color: white;
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+      transition: 0.2s ease;
     }
 
-    .button:hover {
+    .button.primary {
+      background: #0f63b6;
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(15, 99, 182, 0.24);
+    }
+
+    .button.primary:hover {
+      background: #0f3f78;
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.3);
+    }
+
+    .button.secondary {
+      background: #ffffff;
+      color: #0f3f78;
+      border: 1px solid #bfdbfe;
+    }
+
+    .button.secondary:hover {
+      background: #eff6ff;
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+      border: 1px solid #e5e7eb;
+    }
+
+    .portrait-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #dbeafe, #f8fafc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #0f3f78;
+      font-weight: 700;
+      letter-spacing: 0.12em;
     }
 
     main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
+      background: #ffffff;
     }
 
     section {
-      padding: 80px 0;
-      border-bottom: 1px solid #e5e7eb;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 88px 24px;
     }
 
     .section-title {
-      margin-bottom: 32px;
-    }
-
-    .section-title span {
-      color: #2563eb;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      font-size: 34px;
+      font-size: 32px;
       line-height: 1.3;
-      letter-spacing: -0.04em;
-      margin: 8px 0 0;
+      color: #0f172a;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 4px;
+      background: #0f63b6;
+      border-radius: 999px;
+      margin-top: 16px;
+    }
+
+    .message-text {
+      margin-top: 32px;
+      font-size: 18px;
+      color: #374151;
     }
 
     .profile-box {
-      background: white;
+      margin-top: 32px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
       border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    .profile-row {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 28px;
-    }
-
-    .profile-name {
-      font-size: 28px;
-      font-weight: 800;
-      margin: 0 0 10px;
-    }
-
-    .profile-en {
-      color: #6b7280;
-      margin-bottom: 20px;
-    }
-
-    .profile-text {
-      margin: 0;
-      color: #374151;
-    }
-
-    .info-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .info-list li {
-      padding: 12px 0;
+      grid-template-columns: 180px 1fr;
       border-bottom: 1px solid #e5e7eb;
-      display: flex;
-      gap: 16px;
     }
 
-    .info-list strong {
-      min-width: 90px;
-      color: #2563eb;
+    .profile-row:last-child {
+      border-bottom: none;
     }
 
-    .contact-box {
-      background: white;
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
-    }
-
-    .contact-box p {
-      margin-top: 0;
-      color: #374151;
-    }
-
-    .contact-link {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 12px 18px;
-      background: #2563eb;
-      color: white;
-      border-radius: 999px;
+    .profile-label {
+      padding: 18px 22px;
+      background: #eff6ff;
+      color: #0f3f78;
       font-weight: 700;
-      font-size: 14px;
-      transition: 0.2s;
     }
 
-    .contact-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+    .profile-value {
+      padding: 18px 22px;
+      color: #374151;
+      background: #ffffff;
+    }
+
+    .contact-card {
+      margin-top: 32px;
+      padding: 32px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #0f3f78, #0f63b6);
+      color: #ffffff;
+    }
+
+    .contact-card p {
+      margin-bottom: 20px;
+      color: #e0f2fe;
+    }
+
+    .mail-link {
+      display: inline-flex;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #0f3f78;
+      font-weight: 700;
     }
 
     footer {
+      padding: 32px 24px;
       text-align: center;
-      padding: 36px 24px;
-      background: #111827;
-      color: #d1d5db;
-      font-size: 14px;
+      border-top: 1px solid #e5e7eb;
+      color: #6b7280;
+      font-size: 13px;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 760px) {
       .header-inner {
-        flex-direction: column;
-        gap: 12px;
+        padding: 14px 18px;
       }
 
       nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
+        gap: 14px;
+        font-size: 13px;
       }
 
       .hero {
-        padding: 84px 22px 76px;
+        padding-top: 100px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .hero-card {
+        order: -1;
       }
 
       section {
-        padding: 60px 0;
+        padding: 64px 20px;
       }
 
-      .profile-box {
+      .profile-row {
         grid-template-columns: 1fr;
       }
 
-      h2 {
-        font-size: 28px;
+      .profile-label {
+        padding-bottom: 8px;
+      }
+
+      .profile-value {
+        padding-top: 8px;
       }
     }
   </style>
 </head>
-
 <body>
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">岡拓真｜Official Website</a>
-
+      <a href="#top" class="site-title">岡拓真</a>
       <nav>
-        <a href="#profile">プロフィール</a>
-        <a href="#contact">お問い合わせ</a>
+        <a href="#message">Message</a>
+        <a href="#profile">Profile</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <div class="hero">
+  <section id="top" class="hero">
     <div class="hero-inner">
-      <span class="label">Takuma Oka Official Website</span>
-
-      <h1>湘南から京都へ、<br>そして次の時代へ。</h1>
-
-      <p class="hero-text">
-        同志社大学法学部政治学科に在学中。
-      </p>
-
-      <a href="#profile" class="button">プロフィールを見る</a>
-    </div>
-  </div>
-
-  <main>
-    <section id="profile">
-      <div class="section-title">
-        <span>Profile</span>
-        <h2>プロフィール</h2>
+      <div>
+        <span class="label">OFFICIAL WEBSITE</span>
+        <h1>岡拓真</h1>
+        <p class="hero-copy">湘南から京都へ、そして次の時代へ。</p>
+        <p class="hero-sub">同志社大学法学部政治学科</p>
+        <div class="button-row">
+          <a class="button primary" href="#profile">プロフィールを見る</a>
+          <a class="button secondary" href="mailto:okatakuma.official@gmail.com">お問い合わせ</a>
+        </div>
       </div>
 
-      <div class="profile-box">
-        <div>
-          <p class="profile-name">岡 拓真</p>
-          <p class="profile-en">Takuma Oka</p>
-
-          <p class="profile-text">
-            神奈川県出身。神奈川総合高校卒業。
-            現在は同志社大学法学部政治学科に在学しています。
-          </p>
+      <div class="hero-card">
+        <div class="portrait-placeholder">
+          PHOTO<br />AREA
         </div>
+      </div>
+    </div>
+  </section>
 
-        <ul class="info-list">
-          <li><strong>名前</strong><span>岡拓真</span></li>
-          <li><strong>大学</strong><span>同志社大学 法学部政治学科</span></li>
-          <li><strong>出身</strong><span>神奈川県</span></li>
-        </ul>
+  <main>
+    <section id="message">
+      <h2 class="section-title">Message</h2>
+      <p class="message-text">
+        神奈川県で生まれ育ち、現在は京都で政治学を学んでいます。<br />
+        これまでの経験と学びを大切にしながら、社会と向き合っていきます。
+      </p>
+    </section>
+
+    <section id="profile">
+      <h2 class="section-title">Profile</h2>
+      <div class="profile-box">
+        <div class="profile-row">
+          <div class="profile-label">名前</div>
+          <div class="profile-value">岡拓真</div>
+        </div>
+        <div class="profile-row">
+          <div class="profile-label">出身</div>
+          <div class="profile-value">神奈川県</div>
+        </div>
+        <div class="profile-row">
+          <div class="profile-label">出身高校</div>
+          <div class="profile-value">神奈川総合高校 卒業</div>
+        </div>
+        <div class="profile-row">
+          <div class="profile-label">所属</div>
+          <div class="profile-value">同志社大学法学部政治学科 在学</div>
+        </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="section-title">
-        <span>Contact</span>
-        <h2>お問い合わせ</h2>
-      </div>
-
-      <div class="contact-box">
-        <p>
-          ご連絡はメールにてお願いいたします。
-        </p>
-
-        <a class="contact-link" href="mailto:okatakuma.official@gmail.com">
-          okatakuma.official@gmail.com
-        </a>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-card">
+        <p>お問い合わせは、以下のメールアドレスまでお願いいたします。</p>
+        <a class="mail-link" href="mailto:okatakuma.official@gmail.com">okatakuma.official@gmail.com</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Takuma Oka. All Rights Reserved.</p>
+    © 2026 Takuma Oka. All Rights Reserved.
   </footer>
 </body>
 </html>
