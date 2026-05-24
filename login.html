@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>管理者ログイン | 岡拓真 公式サイト</title>
+
   <style>
     body {
       margin: 0;
@@ -68,6 +69,7 @@
 </head>
 
 <body>
+
   <div class="box">
     <h1>管理者ログイン</h1>
 
@@ -82,19 +84,22 @@
   </div>
 
   <script type="module">
+
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
     import {
       getAuth,
       signInWithEmailAndPassword
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     const firebaseConfig = {
-      apiKey: "AIzaSyB8h-Qmk-3PbYXNiQfV9rIvdVKAFSibfiw",
+      apiKey: "AIzaSyB8h-Qmk-3PbYXNiQfV9rTvdVKAFSibfiw",
       authDomain: "okatakuma-official.firebaseapp.com",
       projectId: "okatakuma-official",
       storageBucket: "okatakuma-official.firebasestorage.app",
       messagingSenderId: "71069680445",
-      appId: "1:71069680445:web:6b37b60c06df9151aa3b54"
+      appId: "1:71069680445:web:6b37b60c06df9151aa3b54",
+      measurementId: "G-S6JBP46426"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -104,16 +109,32 @@
     const message = document.getElementById("message");
 
     loginBtn.addEventListener("click", async () => {
+
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
       try {
-        await signInWithEmailAndPassword(auth, email, password);
+
+        await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
         location.href = "admin.html";
+
       } catch (error) {
-        message.textContent = "ログインに失敗しました。メールアドレスかパスワードを確認してください。";
+
+        console.error(error);
+
+        message.textContent =
+          "ログインに失敗しました。";
+
       }
+
     });
+
   </script>
+
 </body>
 </html>
