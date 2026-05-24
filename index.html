@@ -6,222 +6,80 @@
   <title>岡拓真 公式サイト</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f4f7fb;
-      color: #222;
-      line-height: 1.8;
-    }
-
-    header {
-      background: linear-gradient(135deg, #0d47a1, #1565c0);
-      color: white;
-      padding: 100px 20px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .admin-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255,255,255,0.15);
-      color: white;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      backdrop-filter: blur(10px);
-      transition: 0.2s;
-    }
-
-    .admin-btn:hover {
-      background: rgba(255,255,255,0.25);
-    }
-
-    .hero {
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 64px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    .hero p {
-      margin-top: 14px;
-      font-size: 22px;
-      opacity: 0.95;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 50px 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 24px;
-      padding: 35px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    }
-
-    h2 {
-      margin-top: 0;
-      margin-bottom: 20px;
-      color: #0d47a1;
-      font-size: 30px;
-    }
-
-    .profile-text {
-      font-size: 18px;
-    }
-
-    .post {
-      padding: 20px 0;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .post:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .post h3 {
-      margin: 0 0 10px;
-      color: #0d47a1;
-      font-size: 24px;
-    }
-
-    .post p {
-      margin: 0;
-      color: #444;
-    }
-
-    .contact a {
-      color: #1565c0;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 50px 20px;
-      color: #777;
-      font-size: 14px;
-    }
-
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: sans-serif; background: #f4f7fb; color: #222; line-height: 1.8; }
+    header { background: linear-gradient(135deg, #0d47a1, #1565c0); color: white; padding: 100px 20px 80px; position: relative; overflow: hidden; }
+    .admin-btn { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; padding: 10px 16px; border-radius: 999px; font-size: 14px; backdrop-filter: blur(10px); transition: 0.2s; }
+    .admin-btn:hover { background: rgba(255,255,255,0.25); }
+    .hero { max-width: 1000px; margin: auto; }
+    .hero h1 { margin: 0; font-size: 64px; font-weight: 700; letter-spacing: 2px; }
+    .hero p { margin-top: 14px; font-size: 22px; opacity: 0.95; }
+    main { max-width: 1000px; margin: auto; padding: 50px 20px; }
+    .card { background: white; border-radius: 24px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); }
+    h2 { margin-top: 0; margin-bottom: 20px; color: #0d47a1; font-size: 30px; }
+    .profile-text { font-size: 18px; }
+    .post { padding: 20px 0; border-bottom: 1px solid #e0e0e0; }
+    .post:last-child { border-bottom: none; padding-bottom: 0; }
+    .post h3 { margin: 0 0 10px; color: #0d47a1; font-size: 24px; }
+    .post p { margin: 0; color: #444; }
+    .contact a { color: #1565c0; text-decoration: none; font-size: 18px; }
+    footer { text-align: center; padding: 50px 20px; color: #777; font-size: 14px; }
     @media (max-width: 768px) {
-
-      header {
-        padding: 80px 20px 60px;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .hero p {
-        font-size: 18px;
-      }
-
-      .card {
-        padding: 25px;
-        border-radius: 18px;
-      }
-
-      h2 {
-        font-size: 24px;
-      }
-
-      .post h3 {
-        font-size: 20px;
-      }
+      header { padding: 80px 20px 60px; }
+      .hero h1 { font-size: 42px; }
+      .hero p { font-size: 18px; }
+      .card { padding: 25px; border-radius: 18px; }
+      h2 { font-size: 24px; }
+      .post h3 { font-size: 20px; }
     }
   </style>
 </head>
 
 <body>
-
   <header>
-
-    <a href="login.html" class="admin-btn">
-      管理者ログイン
-    </a>
+    <a href="login.html" class="admin-btn">管理者ログイン</a>
 
     <div class="hero">
-      <h1>岡拓真</h1>
-
-      <p>
-        同志社大学法学部政治学科
-      </p>
+      <h1 id="siteName">岡拓真</h1>
+      <p id="siteSubtitle">同志社大学法学部政治学科</p>
     </div>
-
   </header>
 
   <main>
-
     <section class="card">
-
       <h2>プロフィール</h2>
-
-      <p class="profile-text">
+      <p class="profile-text" id="profileBody">
         神奈川県出身。<br>
         神奈川総合高校卒業。<br>
         現在は同志社大学法学部政治学科に在学しています。
       </p>
-
     </section>
 
     <section class="card">
-
       <h2>お知らせ</h2>
-
-      <div id="posts">
-        <p>読み込み中...</p>
-      </div>
-
+      <div id="posts"><p>読み込み中...</p></div>
     </section>
 
     <section class="card contact">
-
       <h2>お問い合わせ</h2>
-
-      <a href="mailto:okatakuma.official@gmail.com">
-        okatakuma.official@gmail.com
-      </a>
-
+      <a id="contactEmail" href="mailto:okatakuma.official@gmail.com">okatakuma.official@gmail.com</a>
     </section>
-
   </main>
 
-  <footer>
-    © 2026 岡拓真
-  </footer>
+  <footer>© 2026 岡拓真</footer>
 
   <script type="module">
-
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
     import {
       getFirestore,
       collection,
       getDocs,
       query,
-      orderBy
-    }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      orderBy,
+      doc,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyB8h-Qmk-3PbYXNiQfV9rTvdVKAFSibfiw",
@@ -236,41 +94,58 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
+    async function loadProfile() {
+      const profileSnap = await getDoc(doc(db, "site", "profile"));
+
+      if (!profileSnap.exists()) return;
+
+      const profile = profileSnap.data();
+
+      document.getElementById("siteName").textContent = profile.name || "岡拓真";
+      document.getElementById("siteSubtitle").textContent = profile.subtitle || "同志社大学法学部政治学科";
+      document.getElementById("profileBody").innerHTML = escapeHTML(profile.body || "").replace(/\n/g, "<br>");
+
+      const email = profile.email || "okatakuma.official@gmail.com";
+      document.getElementById("contactEmail").textContent = email;
+      document.getElementById("contactEmail").href = `mailto:${email}`;
+    }
+
     async function loadPosts() {
-
-      const container =
-        document.getElementById("posts");
-
+      const container = document.getElementById("posts");
       container.innerHTML = "";
 
-      const q = query(
-        collection(db, "posts"),
-        orderBy("createdAt", "desc")
-      );
-
+      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
       const snapshot = await getDocs(q);
 
       snapshot.forEach((item) => {
-
         const post = item.data();
 
         if (post.isPublic === true) {
-
           container.innerHTML += `
             <div class="post">
-              <h3>${post.title}</h3>
-              <p>${post.body}</p>
+              <h3>${escapeHTML(post.title || "")}</h3>
+              <p>${escapeHTML(post.body || "").replace(/\n/g, "<br>")}</p>
             </div>
           `;
         }
-
       });
 
+      if (container.innerHTML === "") {
+        container.innerHTML = "<p>現在、お知らせはありません。</p>";
+      }
     }
 
+    function escapeHTML(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    loadProfile();
     loadPosts();
-
   </script>
-
 </body>
 </html>
