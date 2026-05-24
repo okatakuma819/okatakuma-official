@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>管理者ログイン | 岡拓真 公式サイト</title>
-
   <style>
     body {
       margin: 0;
@@ -16,7 +15,6 @@
       align-items: center;
       min-height: 100vh;
     }
-
     .box {
       background: white;
       width: 90%;
@@ -25,13 +23,11 @@
       border-radius: 16px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-
     h1 {
       margin-top: 0;
       color: #0d47a1;
       font-size: 26px;
     }
-
     input {
       width: 100%;
       padding: 12px;
@@ -39,7 +35,6 @@
       font-size: 16px;
       box-sizing: border-box;
     }
-
     button {
       width: 100%;
       padding: 12px;
@@ -51,7 +46,6 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
     .back {
       display: block;
       margin-top: 20px;
@@ -59,7 +53,6 @@
       color: #0d47a1;
       text-decoration: none;
     }
-
     #message {
       margin-top: 15px;
       color: red;
@@ -69,7 +62,6 @@
 </head>
 
 <body>
-
   <div class="box">
     <h1>管理者ログイン</h1>
 
@@ -84,9 +76,7 @@
   </div>
 
   <script type="module">
-
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
     import {
       getAuth,
       signInWithEmailAndPassword
@@ -105,36 +95,19 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const loginBtn = document.getElementById("loginBtn");
-    const message = document.getElementById("message");
-
-    loginBtn.addEventListener("click", async () => {
-
-      const email = document.getElementById("email").value;
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
 
       try {
-
-        await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
+        await signInWithEmailAndPassword(auth, email, password);
         location.href = "admin.html";
-
       } catch (error) {
-
         console.error(error);
-
-        message.textContent =
-          "ログインに失敗しました。";
-
+        message.textContent = "ログインに失敗しました。メールアドレスかパスワードを確認してください。";
       }
-
     });
-
   </script>
-
 </body>
 </html>
